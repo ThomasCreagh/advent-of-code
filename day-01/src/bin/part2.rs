@@ -1,11 +1,13 @@
 use std::fs;
 
 fn main() {
-    let file_path = "input.txt";
-    println!("In file {}", file_path);
+    let file_path = "../../input2.txt";
+    let input = fs::read_to_string(file_path).unwrap();
+    part2(&input);
+}
 
-    let contents = fs::read_to_string(file_path).unwrap();
-    let lines = contents.split("\n").collect::<Vec<&str>>();
+fn part2(input: &str) -> String {
+    let lines = input.split("\n").collect::<Vec<&str>>();
     let mut sum = 0;
 
     for line in lines {
@@ -39,6 +41,23 @@ fn main() {
             sum += right_digit.to_string().parse::<usize>().unwrap();
         }
     }
-    println!("sum: {sum}");
+    return sum.to_string();
 }
-// 54980
+
+#[cfg(test)]
+mod test {
+    #[test]
+    fn given_io() {
+        use super::*;
+
+        let input = "two1nine
+                eightwothree
+                abcone2threexyz
+                xtwone3four
+                4nineeightseven2
+                zoneight234
+                7pqrstsixteen";
+        let result = part2(input);
+        assert_eq!("281", result);
+    }
+}
