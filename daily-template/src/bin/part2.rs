@@ -3,11 +3,12 @@ use std::fs;
 fn main() {
     let file_path = "input2.txt";
     let input = fs::read_to_string(file_path).unwrap();
-    part2(&input);
+    println!("{}", part2(&input));
 }
 
 fn part2(input: &str) -> String {
     let data = input.split("\n").collect::<Vec<&str>>();
+    for line in data {}
     todo!()
 }
 
