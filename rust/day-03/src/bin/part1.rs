@@ -63,11 +63,8 @@ fn part1(input: &str) -> String {
         }
     }
 
-    // map: entire grid
-    // numbers: sequential numbers
     let mut sum = 0;
     for num_list in numbers {
-        // (x,y)
         let positions = [
             (1, 0),
             (1, -1),
@@ -82,16 +79,14 @@ fn part1(input: &str) -> String {
         let pos_to_check: Vec<(i32, i32)> = num_list
             .iter()
             .flat_map(|(pos, _)| {
-                positions.iter().map(|outer_pos| {
-                    // outer_pos.x + pos.x, .y + .y
-                    (outer_pos.0 + pos.1, outer_pos.1 + pos.0)
-                })
+                positions
+                    .iter()
+                    .map(|outer_pos| (outer_pos.0 + pos.1, outer_pos.1 + pos.0))
             })
             .unique()
             .filter(|num| !num_positions.contains(num))
             .collect();
 
-        // dbg!(pos_to_check.len(), pos_to_check);
         let is_part_number = pos_to_check.iter().any(|pos| {
             let value = map.get(pos);
             #[allow(clippy::match_like_matches_macro)]
