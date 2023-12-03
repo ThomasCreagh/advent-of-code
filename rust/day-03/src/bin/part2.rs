@@ -8,7 +8,7 @@ fn main() {
 
 fn part2(input: &str) -> String {
     let data = input.split("\n").collect::<Vec<&str>>();
-    for line in data {}
+    for _line in data {}
     todo!()
 }
 

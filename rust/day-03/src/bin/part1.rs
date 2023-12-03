@@ -3,6 +3,8 @@
 
 use std::{collections::BTreeMap, fs};
 
+use itertools::Itertools;
+
 #[derive(Debug)]
 enum Cell {
     Symbol(char),
