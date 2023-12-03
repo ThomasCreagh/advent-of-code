@@ -7,6 +7,7 @@ fn main() {
 }
 
 fn part2(input: &str) -> String {
+    let _lines = input.split("\n").collect::<Vec<&str>>();
     todo!()
 }
 
@@ -16,8 +17,8 @@ mod test {
     fn given_io() {
         use super::*;
 
-        let input = "";
-        let result = part2(input);
-        assert_eq!("", result);
+        // let input = "";
+        // let result = part2(input);
+        // assert_eq!("", result);
     }
 }

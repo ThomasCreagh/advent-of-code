@@ -1,7 +1,7 @@
 use std::fs;
 
 fn main() {
-    let file_path = "../../input2.txt";
+    let file_path = "input2.txt";
     let input = fs::read_to_string(file_path).unwrap();
     part2(&input);
 }
