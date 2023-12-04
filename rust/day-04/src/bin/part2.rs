@@ -43,26 +43,10 @@ fn part2(input: &str) -> String {
         .lines()
         .into_iter()
         .map(|line| {
-            let remaining = match up_till_card_num(line) {
-                Ok((remaining_input, _)) => remaining_input,
-                Err(e) => panic!("{e}"),
-            };
-            let (remaining, number) = match remove_card(remaining) {
-                Ok((remaining_input, number)) => (remaining_input, number),
-                Err(e) => panic!("{e}"),
-            };
-            let _number = match get_integer(number) {
-                Ok((_, parsed_num)) => parsed_num,
-                Err(e) => panic!("{e}"),
-            };
-            let remaining = match remove_space_and_colon(remaining) {
-                Ok((remaining_input, _)) => remaining_input,
-                Err(e) => panic!("{e}"),
-            };
-            let (left_vec, right_vec) = match split_lists(remaining) {
-                Ok((_, (left, right))) => (left, right),
-                Err(e) => panic!("{e}"),
-            };
+            let (remaining, _) = up_till_card_num(line).unwrap();
+            let (remaining, _) = remove_card(remaining).unwrap();
+            let (remaining, _) = remove_space_and_colon(remaining).unwrap();
+            let (_, (left_vec, right_vec)) = split_lists(remaining).unwrap();
             left_vec
                 .into_iter()
                 .filter(|item| right_vec.contains(item))
