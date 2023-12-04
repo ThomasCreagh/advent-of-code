@@ -66,7 +66,7 @@ fn part2(input: &str) -> String {
     let mut sum = 0;
     for symbol in map
         .iter()
-        .filter(|(key, value)| matches!(value, Cell::Symbol('*')))
+        .filter(|(_key, value)| matches!(value, Cell::Symbol('*')))
     {
         // (x,y)
         let positions = [
