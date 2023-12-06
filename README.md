@@ -1,4 +1,4 @@
-# Advent-of-code-2023
+# Advent-of-code
 
 This is a repository for my advent of code solutions, 2023
 
