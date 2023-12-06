@@ -101,48 +101,6 @@ fn part1(input: &str) -> String {
         .unwrap();
     println!("{:?}", answer);
 
-    // let mut minimum: i64 = 0;
-    // println!("start");
-
-    // for i in (0..seeds_and_range.len()).step_by(2) {
-    //     let mut j = seeds_and_range[i];
-    //     println!("{j}");
-    //     while j < seeds_and_range[i] + seeds_and_range[i + 1] {
-    //         let mut out: i64 = j;
-    //         maps.iter().for_each(|instruction_guide| {
-    //             for instruction in instruction_guide {
-    //                 if out >= instruction.range.start && out <= instruction.range.end {
-    //                     out += instruction.addition_value;
-    //                     break;
-    //                 }
-    //             }
-    //         });
-    //         if minimum == 0 || minimum > out {
-    //             minimum = out;
-    //         }
-    //         j += 1;
-    //     }
-    // for j in seeds_and_range[i]..seeds_and_range[i] + (seeds_and_range[i + 1]) {
-    //     seeds.push(j);
-    // }
-    // }
-    // let answer: i64 = seeds
-    //     .into_iter()
-    //     .progress()
-    //     .map(|value| {
-    //         let mut out: i64 = value;
-    //         maps.iter().for_each(|instruction_guide| {
-    //             for instruction in instruction_guide {
-    //                 if out >= instruction.range.start && out <= instruction.range.end {
-    //                     out += instruction.addition_value;
-    //                     break;
-    //                 }
-    //             }
-    //         });
-    //         out
-    //     })
-    //     .min()
-    //     .unwrap();
     answer.to_string()
 }
 
