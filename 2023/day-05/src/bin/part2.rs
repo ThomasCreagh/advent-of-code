@@ -1,5 +1,4 @@
 // use indicatif::ProgressIterator;
-use indicatif::{ProgressBar, ProgressIterator};
 use std::fs;
 use std::ops::Range;
 use std::time::Instant;
@@ -12,6 +11,7 @@ use nom::{
     IResult, Parser,
 };
 use nom_supreme::{tag::complete::tag, ParserExt};
+use rayon::iter::{IntoParallelIterator, ParallelIterator};
 
 #[derive(Debug)]
 struct MyRange {
@@ -81,7 +81,7 @@ fn part1(input: &str) -> String {
             println!("{:?}", s_range);
             s_range
                 .clone()
-                .into_iter()
+                .into_par_iter()
                 .map(|value| {
                     let mut out: i64 = value;
                     maps.iter().for_each(|instruction_guide| {
