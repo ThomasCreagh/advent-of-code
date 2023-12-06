@@ -99,7 +99,6 @@ fn part1(input: &str) -> String {
         })
         .min()
         .unwrap();
-    println!("{:?}", answer);
 
     answer.to_string()
 }
