@@ -25,25 +25,30 @@ fn solve(filename: []const u8, allocator: std.mem.Allocator) !isize {
     const cwd = std.fs.cwd();
     const contents = try cwd.readFileAlloc(allocator, filename, 256 * 1024);
     defer allocator.free(contents);
-
-    var counter: isize = 50;
-    var output: isize = 0;
-
+    var dial: isize = 50;
+    var counter: isize = 0;
     var lines = tokenizeScalar(u8, contents, '\n');
     while (lines.next()) |line| {
-        debug("counter: {d}, output: {d}", .{ counter, output });
+        if (line.len == 0) continue;
         const direction = line[0];
-        const number = try parseInt(isize, line[1..], 10);
+        var number = try parseInt(isize, line[1..], 10);
+        const left = (direction == 'L');
 
-        if (direction == 'L') {
-            if (number > counter) {
-                output += 1 + @divFloor(number - counter - 1, 100);
+        while (number > 0) {
+            if (left) {
+                dial -= 1;
+            } else {
+                dial += 1;
             }
-            counter = @mod((counter - number + 10000), 100);
-        } else {
-            counter = @mod(counter + number, 100);
+            if (@abs(dial) == 100) {
+                dial = 0;
+            }
+            if (dial == 0) {
+                counter += 1;
+            }
+            number -= 1;
         }
     }
-    debug("counter: {d}", .{counter});
-    return output;
+    debug("dial: {d}", .{dial});
+    return counter;
 }
